@@ -1,16 +1,125 @@
-id: interger = 1,2,3
+public class Ubicacion {
+    private int id;
+    private String nombre; Roberto Antonio Martin Gomez
+    private double latitud;
+    private double longitud;
+    private int municipio;
+    
+    private int distrito;
+    private int seccion;
 
-nombre : String = 01, 02, 03, 04, 05
-  
-    latitud: real=19.8445901
-    longitud: real=-90.5350973
-    municipio: interger = 1, 2, 3
-     distrito: interger = 1, 2, 3
-     listado: interger=2000
-      votantes:interger=600
+    public Ubicacion(int id, String nombre, double latitud, double longitud, int municipio, int distrito, int seccion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.municipio = municipio;
+        this.distrito = distrito;
+        this.seccion = seccion;
+    }
 
-        ponrcentajeparticipacion
-         real(votantes)
-          (600/2000)*1000
-        porcentajeAbstinencia real (faltantes)
-                 (1,400/2000)
+    // Métodos GET y SET
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public int getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(int municipio) {
+        this.municipio = municipio;
+    }
+
+    public int getDistrito() {
+        return distrito;
+    }
+
+    public void setDistrito(int distrito) {
+        this.distrito = distrito;
+    }
+
+    public int getSeccion() {
+        return seccion;
+    }
+
+    public void setSeccion(int seccion) {
+        this.seccion = seccion;
+    }
+}
+
+
+public class Casilla {
+    private int id;
+    private int listado;
+    private int votantes;
+
+    // Asociación con la clase Ubicacion
+    private Ubicacion ubicacion;
+
+    public Casilla(int id, int listado, int votantes, Ubicacion ubicacion) {
+        this.id = id;
+        this.listado = listado;
+        this.votantes = votantes;
+        this.ubicacion = ubicacion;
+    }
+
+    // Métodos GET y SET
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getListado() {
+        return listado;
+    }
+
+    public void setListado(int listado) {
+        this.listado = listado;
+    }
+
+    public int getVotantes() {
+        return votantes;
+    }
+
+    public void setVotantes(int votantes) {
+        this.votantes = votantes;
+    }
+
+    public double getPorcentajeParticipacion() {
+        return (double) votantes / listado * 100;
+    }
+
+    public double getPorcentajeAbstinencia() {
+        return (double) (listado - votantes)
